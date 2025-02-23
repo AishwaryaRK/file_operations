@@ -1,14 +1,14 @@
-1abc def1
-2gh ij kl1
-3mn op1
-4Try the AI text generator, a tool for content creation.
-5It leverages a transformer-based Large Language Model (LLM)
-6to produce text that follows the users instructions.
-7As an AI generator, it offers a range of functions.
-8 from text generation, to completing sentences
-9 and predicting contextually relevant content.
-10It can serve as a sentence generator, word generator
-11and message generator, transforming input into coherent text.
-12abc def
-13gh ij kl
-14mn op
+1abc defqq*
+2gh ij klq*
+3mn op1qq*
+4Try the AI text generator, a tool for content creation.*
+5It leverages a transformer-based Large Language Model (LLM)*
+6to produce text that follows the users instructions.*
+7As an AI generator, it offers a range of functions.*
+8 from text generation, to completing sentences*
+9 and predicting contextually relevant content.*
+10It can serve as a sentence generator, word generator*
+11and message generator, transforming input into coherent text.*
+12abc def*
+13gh ij kl*
+14mn op*
