@@ -1,4 +1,5 @@
 import collections
+import csv
 import heapq
 from _datetime import datetime
 import logging
@@ -14,18 +15,22 @@ class SalesAnalytics:
     def __aggregate_data(self, filename: str):
         try:
             with open(filename, "r") as fd:
-                fd.readline()
-                for line in fd:
-                    data = line.split(",")
-                    timestamp = datetime.strptime(data[1], "%Y-%m-%d %H:%M:%S")
+                # fd.readline()
+                # for line in fd:
+                #     data = line.split(",")
+
+                reader = csv.DictReader(fd)
+                next(reader)
+                for data in reader:
+                    timestamp = datetime.strptime(data["timestamp"], "%Y-%m-%d %H:%M:%S")
                     month = timestamp.month
-                    product_id = data[2]
-                    category = data[3]
-                    price = float(data[4])
-                    quantity = float(data[5])
-                    location = data[7]
-                    payment_method = data[8]
-                    shipping_cost = float(data[9])
+                    product_id = data["product_id"]
+                    category = data["category"]
+                    price = float(data["price"])
+                    quantity = float(data["quantity"])
+                    location = data["location"]
+                    payment_method = data["payment_method"]
+                    shipping_cost = float(data["shipping_cost"])
 
                     self.revenue_sales[month][category] += price * quantity
 
