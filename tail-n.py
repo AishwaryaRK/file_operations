@@ -27,6 +27,8 @@ from typing import List
 
 
 def tail_n_lines(file_name: str, n: int) -> List[str]:
+    if n==0:
+        return []
     try:
         with open(file_name, "r") as fd:
             fd.seek(0, os.SEEK_END)
@@ -35,7 +37,7 @@ def tail_n_lines(file_name: str, n: int) -> List[str]:
             position = file_size
             n_lines = []
             partial_line = ""
-            while len(n_lines) <= n and position >= 0:
+            while len(n_lines) <= n and position > 0:
                 buffer_size = min(offset, position)
                 position -= buffer_size
                 fd.seek(position, os.SEEK_SET)
@@ -44,7 +46,8 @@ def tail_n_lines(file_name: str, n: int) -> List[str]:
                 lines = buffer.splitlines()
                 partial_line = lines[0]
                 n_lines = lines[1:] + n_lines
-
+            if partial_line:
+                n_lines = [partial_line] + n_lines
         return n_lines[-n:]
     except FileNotFoundError as e:
         logging.error("Error: file not found %s", e)
@@ -52,4 +55,4 @@ def tail_n_lines(file_name: str, n: int) -> List[str]:
         logging.error("Error: %s", e)
 
 
-print(tail_n_lines("test_file.txt", 6))
+print(tail_n_lines("test_file.txt", 90))
