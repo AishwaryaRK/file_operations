@@ -70,7 +70,7 @@ class LogMonitor:
         if log_type == LogType.ERROR.value:
             self.__write_error_file(log, error_fd)
         elif log_type == LogType.INFO.value:
-            self.median_finder.addNum(int(log_msg))
+            self.median_finder.addNum(int(log_msg)) # error handling for int
         print("median-----", self.median_finder.findMedian())
 
     def continuous_monitor_logs(self, file_name: str):

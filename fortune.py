@@ -8,7 +8,6 @@ class Fortune:
     def __init__(self, fortune_filename):
         self.fortune_filename = fortune_filename
         self.fortune_index_filename = self.__index_fortune_file()
-        self.fortune_index_filesize = 0
         logging.basicConfig(filename="fortune.log", level=logging.ERROR,
                             format="%(asctime)s - %(levelname)s - %(message)s")
 
